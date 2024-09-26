@@ -20,7 +20,7 @@ function AdminLayout() {
     if (savedLanguage) {
       i18n.changeLanguage(savedLanguage);
     }
-  }, []);
+  }, [i18n]);
   return (
     <>
       <header>
