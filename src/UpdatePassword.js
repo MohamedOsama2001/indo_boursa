@@ -20,7 +20,7 @@ function UpdatePassword() {
     }
 
     try {
-      const response = await axios.put(
+      await axios.put(
         `http://127.0.0.1:8000/api/users/${user.id}/update-password`,
         {  
           current_password: currentPassword,

@@ -1,8 +1,5 @@
 import React from "react";
 import "./App.css";
-import Footer from "./Footer";
-import Header from "./Header";
-import { useNavigate } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Categories from "./Categories";
 import MainLayout from "./MainLayout";

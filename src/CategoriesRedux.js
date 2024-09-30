@@ -1,5 +1,3 @@
-import { useParams } from "react-router-dom"
-
 //actions
 export const fetchData = () => async dispatch => {
     const response=await fetch('http://127.0.0.1:8000/api/categories')

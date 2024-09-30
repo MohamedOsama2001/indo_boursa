@@ -8,7 +8,7 @@ function AdsForm() {
   const [mediaFile, setMediaFile] = useState(null);
   const [title, setTitle] = useState("");
   const [mobile, setMobile] = useState("");
-  const [user, setuser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [user] = useState(JSON.parse(localStorage.getItem("user")));
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});

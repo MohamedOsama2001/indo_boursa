@@ -1,24 +1,21 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LazyLoadImage from './LazyLoadImages';
 
 function MyAds() {
-  const [user, setuser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [user] = useState(JSON.parse(localStorage.getItem("user")));
   const [userProduct, setUSerProduct] = useState([]);
   const [userAds, setUserAds] = useState([]);
   const [successMessage, setSuccessMessage] = useState("");
   const [activeTab, setActiveTab] = useState("products");
   const {t} = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
   useEffect(() => {
     axios
       .get(`http://127.0.0.1:8000/api/products/${user.id}/products?page=${currentPage}`)
       .then((response) => {
         setUSerProduct(response.data.data);
-        setTotalPages(response.data.last_page);
       })
       .catch((e) => {
         console.log(e);
@@ -29,7 +26,6 @@ function MyAds() {
       .get(`http://127.0.0.1:8000/api/ads/${user.id}/ads?page=${currentPage}`)
       .then((response) => {
         setUserAds(response.data.data);
-        setTotalPages(response.data.last_page);
       })
       .catch((e) => {
         console.log(e);
@@ -74,9 +70,6 @@ function MyAds() {
         .catch((e) => console.log(e));
     }
   }
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
   return (
     <>
     {successMessage && (

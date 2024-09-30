@@ -11,7 +11,6 @@ function Header() {
     localStorage.setItem("language", lng);
   };
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(true);
   const [name, setName] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -23,13 +22,13 @@ function Header() {
   const [showResults, setShowResults] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const [user, setuser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [user] = useState(JSON.parse(localStorage.getItem("user")));
   useEffect(() => {
     const savedLanguage = localStorage.getItem("language");
     if (savedLanguage) {
       i18n.changeLanguage(savedLanguage);
     }
-  }, []);
+  }, [i18n]);
 
   useEffect(() => {
     const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -57,7 +56,6 @@ function Header() {
       if (response.data.user) {
         const user = response.data.user;
         localStorage.setItem("user", JSON.stringify(user));
-        setIsModalOpen(false);
         if (user.rule === "admin" || user.rule === "subuser") {
           navigate("/admin/dashboard");
           window.location.reload();

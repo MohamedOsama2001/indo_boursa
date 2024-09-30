@@ -12,7 +12,7 @@ function SellForm() {
     const [successMessage,setSuccessMessage]=useState('')
     const fileRef = useRef(null);
     const radioRef = useRef(null);
-    const [user, setuser] = useState(JSON.parse(localStorage.getItem('user')))
+    const [user] = useState(JSON.parse(localStorage.getItem('user')))
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/api/categories/${id}`)
             .then((response) => {
@@ -63,7 +63,7 @@ function SellForm() {
         });
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/products', data, {
+            await axios.post('http://127.0.0.1:8000/api/products', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },

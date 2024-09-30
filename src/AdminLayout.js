@@ -9,7 +9,7 @@ function AdminLayout() {
     localStorage.setItem("language", lng);
   };
   const navigate = useNavigate();
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [user] = useState(JSON.parse(localStorage.getItem("user")));
   const handleLogout = () => {
     localStorage.clear();
     navigate("/");
