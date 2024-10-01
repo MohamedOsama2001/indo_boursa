@@ -14,14 +14,14 @@ const LazyLoadImage = ({ src, alt, ...props }) => {
       },
       { threshold: 0.1 }
     );
-
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
+    const currentImgRef = imgRef.current;
+    if (currentImgRef) {
+      observer.observe(currentImgRef);
     }
 
     return () => {
-      if (imgRef.current) {
-        observer.unobserve(imgRef.current);
+      if (currentImgRef) {
+        observer.unobserve(currentImgRef);
       }
     };
   }, []);

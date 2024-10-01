@@ -160,6 +160,7 @@ function ChoosenProduct() {
                 style={{ textDecoration: "none", color: "#282c34" }}
                 href={googleMapsURL}
                 target="_blank"
+                rel="noreferrer"
               >
                 <p>
                   <i class="fas fa-map-marker-alt"></i>{" "}

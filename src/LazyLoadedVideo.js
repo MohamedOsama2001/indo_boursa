@@ -14,14 +14,15 @@ const LazyLoadedVideo = ({ src, poster, ...props }) => {
       },
       { threshold: 0.1 }
     );
+    const currentVideoRef = videoRef.current;
 
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
+    if (currentVideoRef) {
+      observer.observe(currentVideoRef);
     }
 
     return () => {
-      if (observer && videoRef.current) {
-        observer.unobserve(videoRef.current);
+      if (observer && currentVideoRef) {
+        observer.unobserve(currentVideoRef);
       }
     };
   }, []);
